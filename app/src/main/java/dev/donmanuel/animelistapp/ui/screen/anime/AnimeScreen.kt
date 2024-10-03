@@ -36,6 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -64,8 +65,9 @@ fun SharedTransitionScope.AnimeScreen(
 				title = {
 					Text(
 						anime?.attributes?.canonicalTitle ?: "Details",
+						maxLines = 1,
+						overflow = TextOverflow.Ellipsis,
 						style = MaterialTheme.typography.titleMedium,
-						fontWeight = FontWeight.Bold,
 					)
 				},
 				navigationIcon = {

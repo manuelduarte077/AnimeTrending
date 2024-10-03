@@ -35,6 +35,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.rememberNavController
+import dev.donmanuel.animelistapp.SettingsRoute
 import dev.donmanuel.animelistapp.ui.screen.trending_anime.composable.AnimeCard
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,6 +47,7 @@ fun SharedTransitionScope.TrendingAnimeScreen(
 	viewModel: TrendingAnimeViewModel = hiltViewModel()
 ) {
 	val animeData by viewModel.animeData.collectAsStateWithLifecycle()
+	val navController = rememberNavController()
 
 	Scaffold(topBar = {
 		TopAppBar(title = {
@@ -55,8 +58,10 @@ fun SharedTransitionScope.TrendingAnimeScreen(
 				textAlign = TextAlign.Center,
 			)
 		}, actions = {
-			IconButton(onClick = { /*TODO*/ }) {
-				Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Back")
+			IconButton(onClick = {
+				navController.navigate("settings")
+			}) {
+				Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings")
 			}
 
 		})

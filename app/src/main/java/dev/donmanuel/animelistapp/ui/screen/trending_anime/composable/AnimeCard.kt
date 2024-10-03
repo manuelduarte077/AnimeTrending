@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -46,8 +47,8 @@ fun SharedTransitionScope.AnimeCard(
 				model = anime.attributes.posterImage.original,
 				contentDescription = "anime image",
 				modifier = Modifier
-					.size(96.dp)
-					.clip(RoundedCornerShape(10.dp))
+					.size(120.dp)
+					.clip(RoundedCornerShape(8.dp))
 					.sharedElement(
 						rememberSharedContentState(key = anime.id),
 						animatedVisibilityScope = animatedVisibilityScope
@@ -69,21 +70,25 @@ fun SharedTransitionScope.AnimeCard(
 						contentDescription = "rating",
 						tint = Color.Yellow
 					)
-					Text(text = anime.attributes.averageRating.toString())
+					Text(
+						text = anime.attributes.averageRating.toString(),
+						style = MaterialTheme.typography.labelSmall,
+						fontWeight = FontWeight.Bold
+					)
 				}
 
 				Text(
 					text = anime.attributes.canonicalTitle.toString(),
 					maxLines = 1,
 					overflow = TextOverflow.Ellipsis,
-					style = MaterialTheme.typography.titleLarge
+					style = MaterialTheme.typography.bodyLarge
 				)
 
 				Text(
 					text = anime.attributes.synopsis.toString(),
 					maxLines = 2,
 					overflow = TextOverflow.Ellipsis,
-					style = MaterialTheme.typography.bodyMedium
+					style = MaterialTheme.typography.titleMedium
 				)
 			}
 		}
