@@ -1,12 +1,13 @@
-
 ### Anime List
-<img 
-  width="220"
-  src="https://github.com/user-attachments/assets/636f1256-f641-41c5-9dd5-4d117be43496"
-  />
+<img width="220" src="demo/anime_list.png" />
+<img width="220" src="demo/detail.png" />
 
-### Anime Details
-<img 
-  width="220"
-  src="https://github.com/user-attachments/assets/af575837-812d-40cb-adb1-8618ac9bff0a"
-  />
+### Settings
+<img width="220" src="demo/settings.png" />
+<img width="220" src="demo/bookmarks.png" />
+
+## Demo
+
+<video height="420xxs" controls>
+  <source src="demo/demo.mp4" type="video/mp4">
+</video>
