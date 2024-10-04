@@ -13,10 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.Feed
-import androidx.compose.material.icons.automirrored.sharp.SendToMobile
-import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dev.donmanuel.animelistapp.SettingsRoute
 import dev.donmanuel.animelistapp.ui.screen.trending_anime.composable.AnimeCard
@@ -42,12 +39,12 @@ import dev.donmanuel.animelistapp.ui.screen.trending_anime.composable.AnimeCard
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SharedTransitionScope.TrendingAnimeScreen(
+	navController: NavHostController,
 	onAnimeClick: (String, String) -> Unit,
 	animatedVisibilityScope: AnimatedVisibilityScope,
 	viewModel: TrendingAnimeViewModel = hiltViewModel()
 ) {
 	val animeData by viewModel.animeData.collectAsStateWithLifecycle()
-	val navController = rememberNavController()
 
 	Scaffold(topBar = {
 		TopAppBar(title = {
@@ -59,7 +56,7 @@ fun SharedTransitionScope.TrendingAnimeScreen(
 			)
 		}, actions = {
 			IconButton(onClick = {
-				navController.navigate("settings")
+				navController.navigate(SettingsRoute)
 			}) {
 				Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings")
 			}

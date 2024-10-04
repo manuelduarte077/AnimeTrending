@@ -21,11 +21,15 @@ fun AppNavigation(navController: NavHostController) {
 
 			// Trending Anime Screen
 			composable<TrendingAnimeRoute> {
-				TrendingAnimeScreen(animatedVisibilityScope = this, onAnimeClick = { coverUrl, id ->
-					navController.navigate(
-						AnimeRoute(coverUrl = coverUrl, id = id)
-					)
-				})
+				TrendingAnimeScreen(
+					animatedVisibilityScope = this,
+					onAnimeClick = { coverUrl, id ->
+						navController.navigate(
+							AnimeRoute(coverUrl = coverUrl, id = id)
+						)
+					},
+					navController = navController,
+				)
 			}
 
 			// Anime Screen

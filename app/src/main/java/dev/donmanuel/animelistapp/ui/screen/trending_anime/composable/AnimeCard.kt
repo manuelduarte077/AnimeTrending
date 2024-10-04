@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -63,7 +64,7 @@ fun SharedTransitionScope.AnimeCard(
 							Color(0xFFC4C7EB),
 							shape = RoundedCornerShape(20.dp)
 						)
-						.padding(horizontal = 6.dp, vertical = 2.dp)
+						.padding(horizontal = 6.dp, vertical = 4.dp)
 				) {
 					Icon(
 						imageVector = Icons.Rounded.Star,
@@ -72,7 +73,8 @@ fun SharedTransitionScope.AnimeCard(
 					)
 					Text(
 						text = anime.attributes.averageRating.toString(),
-						style = MaterialTheme.typography.labelSmall,
+						style = MaterialTheme.typography.titleMedium,
+						textAlign = TextAlign.Center,
 						fontWeight = FontWeight.Bold
 					)
 				}
