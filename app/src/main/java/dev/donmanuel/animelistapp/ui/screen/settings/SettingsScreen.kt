@@ -53,7 +53,6 @@ fun SettingsScreen(
 	val showBookmarksSheet = remember { mutableStateOf(false) }
 	val showPrivacyPolicySheet = remember { mutableStateOf(false) }
 	val coroutineScope = rememberCoroutineScope()
-	val scrollState = rememberModalBottomSheetState()
 
 	val bookmarkList = listOf(
 		"One Piece",

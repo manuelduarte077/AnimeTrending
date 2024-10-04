@@ -156,11 +156,17 @@ fun SharedTransitionScope.AnimeScreen(
 								text = "Synopsis",
 								style = MaterialTheme.typography.bodyLarge,
 							)
+							Spacer(modifier = Modifier.height(8.dp))
 							Text(
 								text = anime?.attributes?.synopsis ?: "",
 								style = MaterialTheme.typography.titleMedium,
 							)
 						}
+
+						Spacer(modifier = Modifier.height(16.dp))
+
+						/// Total episodes and status
+
 					}
 				}
 			}

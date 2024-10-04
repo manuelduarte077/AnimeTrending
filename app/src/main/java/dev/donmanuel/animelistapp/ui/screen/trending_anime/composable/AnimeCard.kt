@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -75,7 +76,7 @@ fun SharedTransitionScope.AnimeCard(
 						text = anime.attributes.averageRating.toString(),
 						style = MaterialTheme.typography.titleMedium,
 						textAlign = TextAlign.Center,
-						fontWeight = FontWeight.Bold
+						fontWeight = FontWeight.SemiBold
 					)
 				}
 
@@ -91,6 +92,32 @@ fun SharedTransitionScope.AnimeCard(
 					maxLines = 2,
 					overflow = TextOverflow.Ellipsis,
 					style = MaterialTheme.typography.titleMedium
+				)
+
+				Row(
+					modifier = Modifier
+						.fillMaxWidth()
+						.padding(horizontal = 6.dp, vertical = 4.dp),
+					verticalAlignment = Alignment.CenterVertically,
+					horizontalArrangement = Arrangement.SpaceBetween,
+				) {
+					Text(
+						text = "Episodes: ${anime.attributes.episodeCount}",
+						style = MaterialTheme.typography.labelMedium
+					)
+					Text(
+						text = " | ",
+						style = MaterialTheme.typography.labelMedium
+					)
+					Text(
+						text = "Status: ${anime.attributes.status}",
+						style = MaterialTheme.typography.labelMedium
+					)
+				}
+
+				Text(
+					text = "Age Rating: ${anime.attributes.ageRatingGuide}",
+					style = MaterialTheme.typography.labelMedium
 				)
 			}
 		}
