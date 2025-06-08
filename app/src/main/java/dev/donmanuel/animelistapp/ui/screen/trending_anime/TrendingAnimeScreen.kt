@@ -29,11 +29,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import dev.donmanuel.animelistapp.SettingsRoute
 import dev.donmanuel.animelistapp.ui.screen.trending_anime.composable.AnimeCard
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,7 +41,7 @@ fun SharedTransitionScope.TrendingAnimeScreen(
     navController: NavHostController,
     onAnimeClick: (String, String) -> Unit,
     animatedVisibilityScope: AnimatedVisibilityScope,
-    viewModel: TrendingAnimeViewModel = hiltViewModel()
+    viewModel: TrendingAnimeViewModel = koinViewModel()
 ) {
     val animeData by viewModel.animeData.collectAsStateWithLifecycle()
 
@@ -92,4 +92,3 @@ fun SharedTransitionScope.TrendingAnimeScreen(
         }
     }
 }
-

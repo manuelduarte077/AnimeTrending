@@ -1,15 +1,13 @@
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.jetbrains.kotlin.android)
-	alias(libs.plugins.kotlin.kapt)
-	alias(libs.plugins.hilt.android)
 	alias(libs.plugins.compose.compiler)
 	alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
 	namespace = "dev.donmanuel.animelistapp"
-	compileSdk = 34
+	compileSdk = 35
 
 	defaultConfig {
 		applicationId = "dev.donmanuel.animelistapp"
@@ -52,10 +50,6 @@ android {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
 		}
 	}
-}
-
-kapt {
-	correctErrorTypes = true
 }
 
 dependencies {
@@ -104,10 +98,8 @@ dependencies {
 	implementation(libs.okhttp)
 	implementation(libs.okhttp.logging.interceptor)
 
-	// MARK: - Hilt (dagger/hilt)
-	implementation(libs.hilt.android)
-	kapt(libs.hilt.compiler)
-	kapt(libs.hilt.android.compiler)
-	implementation(libs.androidx.hilt.navigation.compose)
-	kapt(libs.androidx.hilt.compiler)
+	// MARK: - Koin
+	implementation(libs.koin.core)
+	implementation(libs.koin.android)
+	implementation(libs.koin.compose)
 }

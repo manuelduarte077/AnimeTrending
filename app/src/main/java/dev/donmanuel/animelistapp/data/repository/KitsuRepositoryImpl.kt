@@ -8,10 +8,8 @@ import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onException
 import com.skydoves.sandwich.onSuccess
-import javax.inject.Inject
 
-
-class KitsuRepositoryImpl @Inject constructor(
+class KitsuRepositoryImpl(
     private val api: KitsuApi
 ) : KitsuRepository {
 

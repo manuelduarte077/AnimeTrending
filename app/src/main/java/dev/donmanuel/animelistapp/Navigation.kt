@@ -1,4 +1,3 @@
-// Navigation.kt
 package dev.donmanuel.animelistapp
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi

@@ -14,11 +14,11 @@ Una aplicación móvil moderna para Android que muestra información sobre anime
 
 - **Kotlin**: Lenguaje de programación principal.
 - **Jetpack Compose**: Framework moderno para la construcción de UI nativa en Android.
-- **Hilt**: Para la inyección de dependencias.
+- **Koin**: Para la inyección de dependencias.
 - **Coroutines & Flow**: Para operaciones asíncronas y programación reactiva.
 - **Navigation Compose**: Para la navegación entre pantallas.
 - **Coil**: Para la carga eficiente de imágenes.
-- **Retrofit & Kotlinx Serialization**: Para las llamadas a la API y el manejo de JSON.
+- **Retrofit & Moshi**: Para las llamadas a la API y el manejo de JSON.
 - **Material 3**: Para implementar el diseño de la interfaz de usuario.
 
 ## Capturas de Pantalla
@@ -35,7 +35,7 @@ Una aplicación móvil moderna para Android que muestra información sobre anime
 
 - **ui/screen**: Contiene las diferentes pantallas de la aplicación (TrendingAnimeScreen, AnimeScreen, SettingsScreen).
 - **data**: Manejo de datos y comunicación con la API.
-- **di**: Módulos de inyección de dependencias.
+- **di**: Módulos de inyección de dependencias (KoinModule).
 - **model**: Clases de datos y modelos.
 - **navigation**: Configuración de navegación entre pantallas.
 
