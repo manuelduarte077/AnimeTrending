@@ -38,14 +38,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalSharedTransitionApi::class)
 @Composable
 fun SharedTransitionScope.AnimeScreen(
-    viewModel: AnimeViewModel = hiltViewModel(),
+    viewModel: AnimeViewModel = koinViewModel(),
     coverImage: String?,
     id: Int,
     animatedVisibilityScope: AnimatedVisibilityScope,
@@ -81,8 +81,8 @@ fun SharedTransitionScope.AnimeScreen(
         }) { innerPadding ->
         LazyColumn(
             modifier = Modifier
-				.fillMaxSize()
-				.padding(bottom = innerPadding.calculateBottomPadding(), top = 20.dp),
+                .fillMaxSize()
+                .padding(bottom = innerPadding.calculateBottomPadding(), top = 20.dp),
             horizontalAlignment = Alignment.Start
         ) {
             item {
@@ -90,17 +90,17 @@ fun SharedTransitionScope.AnimeScreen(
                     model = coverImage,
                     contentDescription = null,
                     modifier = Modifier
-						.fillMaxWidth()
-						.height(300.dp)
-						.clip(
-							RoundedCornerShape(
-								bottomEnd = 10.dp, bottomStart = 10.dp
-							)
-						)
-						.sharedElement(
-							rememberSharedContentState(key = id.toString()),
-							animatedVisibilityScope = animatedVisibilityScope
-						),
+                        .fillMaxWidth()
+                        .height(300.dp)
+                        .clip(
+                            RoundedCornerShape(
+                                bottomEnd = 10.dp, bottomStart = 10.dp
+                            )
+                        )
+                        .sharedElement(
+                            rememberSharedContentState(key = id.toString()),
+                            animatedVisibilityScope = animatedVisibilityScope
+                        ),
                     contentScale = ContentScale.Crop
                 )
             }
@@ -109,8 +109,8 @@ fun SharedTransitionScope.AnimeScreen(
                 if (anime != null) {
                     Column(
                         modifier = Modifier
-							.padding(horizontal = 20.dp, vertical = 16.dp)
-							.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
+                            .padding(horizontal = 20.dp, vertical = 16.dp)
+                            .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
                             text = anime?.attributes?.canonicalTitle ?: "",

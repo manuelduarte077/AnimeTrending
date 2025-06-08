@@ -2,17 +2,14 @@ package dev.donmanuel.animelistapp.ui.screen.anime
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.donmanuel.animelistapp.domain.model.AnimeData
 import dev.donmanuel.animelistapp.domain.repository.KitsuRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class AnimeViewModel @Inject constructor(
+class AnimeViewModel(
     private val api: KitsuRepository
 ) : ViewModel() {
 
