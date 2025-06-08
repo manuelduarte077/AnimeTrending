@@ -44,7 +44,7 @@ data class AttributesDto(
     val canonicalTitle: String?,
     val abbreviatedTitles: List<String>,
     val averageRating: String?,
-    val ratingFrequencies: Map<String,String>,
+    val ratingFrequencies: Map<String, String>,
     val userCount: Int?,
     val favoritesCount: Int?,
     val startDate: String?,

@@ -12,21 +12,21 @@ import dev.donmanuel.animelistapp.ui.theme.AnimeListAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		enableEdgeToEdge()
-		setContent {
-			AnimeListAppTheme {
-				val navController = rememberNavController()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            AnimeListAppTheme {
+                val navController = rememberNavController()
 
-				enableEdgeToEdge(
-					statusBarStyle = SystemBarStyle.dark(
-						android.graphics.Color.TRANSPARENT
-					)
-				)
+                enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.dark(
+                        android.graphics.Color.TRANSPARENT
+                    )
+                )
 
-				AppNavigation(navController = navController)
-			}
-		}
-	}
+                AppNavigation(navController = navController)
+            }
+        }
+    }
 }

@@ -45,127 +45,127 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
-	navigateBack: () -> Unit,
+    navigateBack: () -> Unit,
 ) {
-	// States to manage theme and language switch
-	val isDarkTheme = remember { mutableStateOf(false) }
-	val isEnglish = remember { mutableStateOf(true) }
-	val showBookmarksSheet = remember { mutableStateOf(false) }
-	val showPrivacyPolicySheet = remember { mutableStateOf(false) }
-	val coroutineScope = rememberCoroutineScope()
+    // States to manage theme and language switch
+    val isDarkTheme = remember { mutableStateOf(false) }
+    val isEnglish = remember { mutableStateOf(true) }
+    val showBookmarksSheet = remember { mutableStateOf(false) }
+    val showPrivacyPolicySheet = remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
-	val bookmarkList = listOf(
-		"One Piece",
-		"Naruto",
-		"Dragon Ball",
-		"Attack on Titan",
-		"Death Note",
-		"Tokyo Revengers",
-		"Jujutsu Kaisen",
-		"Black Clover",
-		"Haikyuu",
-		"Re:Zero",
-		"Dr. Stone",
-		"Vinland Saga",
-		"Beastars",
-		"Mob Psycho 100",
-		"Kaguya-sama: Love is War",
-		"Steins;Gate",
-		"Code Geass",
-		"Fullmetal Alchemist",
-		"Your Lie in April",
-		"Anohana",
-		"Clannad",
-		"Toradora",
-	)
+    val bookmarkList = listOf(
+        "One Piece",
+        "Naruto",
+        "Dragon Ball",
+        "Attack on Titan",
+        "Death Note",
+        "Tokyo Revengers",
+        "Jujutsu Kaisen",
+        "Black Clover",
+        "Haikyuu",
+        "Re:Zero",
+        "Dr. Stone",
+        "Vinland Saga",
+        "Beastars",
+        "Mob Psycho 100",
+        "Kaguya-sama: Love is War",
+        "Steins;Gate",
+        "Code Geass",
+        "Fullmetal Alchemist",
+        "Your Lie in April",
+        "Anohana",
+        "Clannad",
+        "Toradora",
+    )
 
-	// Sheet state
-	val bottomSheetState = rememberModalBottomSheetState(
-		skipPartiallyExpanded = true
-	)
+    // Sheet state
+    val bottomSheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
 
-	Scaffold(topBar = {
-		TopAppBar(
-			title = {
-				Text(
-					text = "Settings",
-					style = MaterialTheme.typography.titleMedium,
-					fontWeight = FontWeight.Bold,
-					textAlign = TextAlign.Center,
-				)
-			},
-			navigationIcon = {
-				IconButton(onClick = navigateBack) {
-					Icon(
-						imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-						contentDescription = "Back"
-					)
-				}
-			},
-		)
-	}) { innerPadding ->
-		Box(
-			modifier = Modifier
+    Scaffold(topBar = {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Settings",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                )
+            },
+            navigationIcon = {
+                IconButton(onClick = navigateBack) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back"
+                    )
+                }
+            },
+        )
+    }) { innerPadding ->
+        Box(
+            modifier = Modifier
 				.fillMaxSize()
 				.padding(innerPadding)
-		) {
-			Column(
-				modifier = Modifier
+        ) {
+            Column(
+                modifier = Modifier
 					.fillMaxSize()
 					.padding(16.dp),
-				verticalArrangement = Arrangement.spacedBy(16.dp),
-				horizontalAlignment = Alignment.Start
-			) {
-				// Change Theme option
-				Text(
-					text = "Change Theme",
-					style = MaterialTheme.typography.bodyLarge,
-					fontWeight = FontWeight.SemiBold
-				)
-				Row(
-					modifier = Modifier.fillMaxWidth(),
-					verticalAlignment = Alignment.CenterVertically,
-					horizontalArrangement = Arrangement.SpaceBetween
-				) {
-					Text(
-						text = if (isDarkTheme.value) "Dark" else "Light",
-						style = MaterialTheme.typography.titleMedium,
-						fontWeight = FontWeight.Medium,
-					)
-					Switch(
-						checked = isDarkTheme.value,
-						onCheckedChange = { isDarkTheme.value = it })
-				}
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                // Change Theme option
+                Text(
+                    text = "Change Theme",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = if (isDarkTheme.value) "Dark" else "Light",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Medium,
+                    )
+                    Switch(
+                        checked = isDarkTheme.value,
+                        onCheckedChange = { isDarkTheme.value = it })
+                }
 
-				HorizontalDivider()
+                HorizontalDivider()
 
-				// Change Language option
-				Text(
-					text = "Change Language",
-					style = MaterialTheme.typography.titleMedium,
-					fontWeight = FontWeight.SemiBold
-				)
-				Row(
-					modifier = Modifier.fillMaxWidth(),
-					verticalAlignment = Alignment.CenterVertically,
-					horizontalArrangement = Arrangement.SpaceBetween
-				) {
-					Text(
-						text = if (isEnglish.value) "English" else "Spanish",
-						style = MaterialTheme.typography.titleMedium,
-						fontWeight = FontWeight.Medium,
-					)
-					Switch(
-						checked = isEnglish.value,
-						onCheckedChange = { isEnglish.value = it },
-					)
-				}
+                // Change Language option
+                Text(
+                    text = "Change Language",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = if (isEnglish.value) "English" else "Spanish",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Medium,
+                    )
+                    Switch(
+                        checked = isEnglish.value,
+                        onCheckedChange = { isEnglish.value = it },
+                    )
+                }
 
-				HorizontalDivider()
+                HorizontalDivider()
 
-				// Bookmarks option
-				Row(
-					modifier = Modifier
+                // Bookmarks option
+                Row(
+                    modifier = Modifier
 						.padding(top = 16.dp)
 						.clickable {
 							coroutineScope.launch {
@@ -173,191 +173,192 @@ fun SettingsScreen(
 							}
 						},
 
-					verticalAlignment = Alignment.CenterVertically,
-					horizontalArrangement = Arrangement.SpaceBetween
-				) {
-					Icon(
-						imageVector = Icons.Rounded.Bookmarks,
-						contentDescription = "Bookmarks",
-						modifier = Modifier.padding(end = 8.dp),
-					)
-					Text(
-						text = "Bookmarks",
-						style = MaterialTheme.typography.titleMedium,
-						fontWeight = FontWeight.SemiBold
-					)
-				}
-				HorizontalDivider()
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Bookmarks,
+                        contentDescription = "Bookmarks",
+                        modifier = Modifier.padding(end = 8.dp),
+                    )
+                    Text(
+                        text = "Bookmarks",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                HorizontalDivider()
 
-				// App Name
-				Text(
-					text = "App Name",
-					style = MaterialTheme.typography.titleMedium,
-					fontWeight = FontWeight.SemiBold
-				)
-				Text(
-					text = "AnimeList App",
-					style = MaterialTheme.typography.titleSmall,
-					fontWeight = FontWeight.Medium,
-					modifier = Modifier
+                // App Name
+                Text(
+                    text = "App Name",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = "AnimeList App",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier
 						.fillMaxWidth()
 						.padding(top = 8.dp)
-				)
-				HorizontalDivider()
+                )
+                HorizontalDivider()
 
-				/// Privacy Policy
-				Row(modifier = Modifier
-					.padding(top = 16.dp)
-					.clickable {
-						coroutineScope.launch {
-							showPrivacyPolicySheet.value = true
-						}
-					}) {
-					Icon(
-						imageVector = Icons.Rounded.PrivacyTip,
-						contentDescription = "Bookmarks",
-						modifier = Modifier.padding(end = 8.dp)
-					)
+                /// Privacy Policy
+                Row(
+                    modifier = Modifier
+						.padding(top = 16.dp)
+						.clickable {
+							coroutineScope.launch {
+								showPrivacyPolicySheet.value = true
+							}
+						}) {
+                    Icon(
+                        imageVector = Icons.Rounded.PrivacyTip,
+                        contentDescription = "Bookmarks",
+                        modifier = Modifier.padding(end = 8.dp)
+                    )
 
-					Text(
-						text = "Privacy Policy",
-						style = MaterialTheme.typography.titleMedium,
-						fontWeight = FontWeight.SemiBold,
-					)
-				}
+                    Text(
+                        text = "Privacy Policy",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
 
-				HorizontalDivider()
+                HorizontalDivider()
 
-				// App Version
-				Text(
-					text = "App Version",
-					style = MaterialTheme.typography.titleMedium,
-					fontWeight = FontWeight.Medium
-				)
-				Text(
-					text = "1.0.0",
-					style = MaterialTheme.typography.titleMedium,
-					modifier = Modifier
+                // App Version
+                Text(
+                    text = "App Version",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "1.0.0",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier
 						.fillMaxWidth()
 						.padding(top = 8.dp)
-				)
+                )
 
-			}
-		}
+            }
+        }
 
-		// BottomSheet for bookmarks
-		if (showBookmarksSheet.value) {
-			ModalBottomSheet(
-				modifier = Modifier
+        // BottomSheet for bookmarks
+        if (showBookmarksSheet.value) {
+            ModalBottomSheet(
+                modifier = Modifier
 					.fillMaxSize()
 					.padding(vertical = 16.dp),
-				onDismissRequest = { showBookmarksSheet.value = false },
-				sheetState = bottomSheetState,
-			) {
-				LazyColumn(
-					modifier = Modifier
+                onDismissRequest = { showBookmarksSheet.value = false },
+                sheetState = bottomSheetState,
+            ) {
+                LazyColumn(
+                    modifier = Modifier
 						.padding(16.dp)
 						.fillMaxWidth()
-				) {
-					items(bookmarkList) { bookmark ->
-						BookmarksCard(bookmark = bookmark)
-						HorizontalDivider()
-					}
-				}
-			}
+                ) {
+                    items(bookmarkList) { bookmark ->
+                        BookmarksCard(bookmark = bookmark)
+                        HorizontalDivider()
+                    }
+                }
+            }
 
-		}
-	}
+        }
+    }
 
-	/// Privacy Policy Modal
-	if (showPrivacyPolicySheet.value) {
-		ModalBottomSheet(
-			modifier = Modifier
+    /// Privacy Policy Modal
+    if (showPrivacyPolicySheet.value) {
+        ModalBottomSheet(
+            modifier = Modifier
 				.fillMaxSize()
 				.padding(vertical = 16.dp),
-			onDismissRequest = { showPrivacyPolicySheet.value = false },
-			sheetState = bottomSheetState,
-			shape = MaterialTheme.shapes.small,
-		) {
-			Column(
-				modifier = Modifier
+            onDismissRequest = { showPrivacyPolicySheet.value = false },
+            sheetState = bottomSheetState,
+            shape = MaterialTheme.shapes.small,
+        ) {
+            Column(
+                modifier = Modifier
 					.padding(horizontal = 16.dp)
 					.verticalScroll(rememberScrollState()),
-				verticalArrangement = Arrangement.spacedBy(16.dp),
-			) {
-				Text(
-					text = "This is the privacy policy",
-					style = MaterialTheme.typography.titleMedium,
-					fontWeight = FontWeight.SemiBold,
-				)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Text(
+                    text = "This is the privacy policy",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                )
 
-				Spacer(modifier = Modifier.height(12.dp))
-				Text(
-					text = privacyPolicy,
-					style = MaterialTheme.typography.labelSmall,
-					fontWeight = FontWeight.Medium
-				)
-				Spacer(modifier = Modifier.height(16.dp))
-			}
-		}
-	}
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = privacyPolicy,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Medium
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+        }
+    }
 }
 
 
 /// Bookmarks Card
 @Composable
 fun BookmarksCard(
-	bookmark: String,
+    bookmark: String,
 ) {
-	Row(
-		modifier = Modifier
+    Row(
+        modifier = Modifier
 			.fillMaxWidth()
 			.padding(16.dp),
-		verticalAlignment = Alignment.CenterVertically,
-		horizontalArrangement = Arrangement.SpaceBetween
-	) {
-		/// Imagen
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        /// Imagen
 
-		Icon(
-			imageVector = Icons.Rounded.Bookmarks,
-			contentDescription = "Bookmark",
-			tint = PurpleGrey80,
-			modifier = Modifier
+        Icon(
+            imageVector = Icons.Rounded.Bookmarks,
+            contentDescription = "Bookmark",
+            tint = PurpleGrey80,
+            modifier = Modifier
 				.height(60.dp)
 				.width(60.dp)
 
-		)
-		Spacer(modifier = Modifier.width(8.dp))
-		Column {
-			Text(
-				text = bookmark,
-				style = MaterialTheme.typography.titleMedium,
-				fontWeight = FontWeight.Bold,
-			)
-			Text(
-				text = "This is a description of the anime",
-				style = MaterialTheme.typography.titleSmall,
-				fontWeight = FontWeight.Medium
-			)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Column {
+            Text(
+                text = bookmark,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "This is a description of the anime",
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.Medium
+            )
 
-			Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-			Row(
-				modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
-			) {
-				Text(
-					text = "Episodes: 12",
-					style = MaterialTheme.typography.titleSmall,
-					fontWeight = FontWeight.SemiBold
-				)
-				Text(
-					text = "Score: 9.5",
-					style = MaterialTheme.typography.titleSmall,
-					fontWeight = FontWeight.SemiBold
-				)
-			}
-		}
-	}
+            Row(
+                modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Episodes: 12",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = "Score: 9.5",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+        }
+    }
 }
 
 

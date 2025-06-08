@@ -18,18 +18,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-	@Provides
-	@Singleton
-	fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    @Provides
+    @Singleton
+    fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-	@Singleton
-	@Provides
-	fun provideKitsuApi(moshi: Moshi): KitsuApi = Retrofit.Builder().baseUrl(KitsuApi.baseUrl)
-		.addConverterFactory(MoshiConverterFactory.create(moshi))
-		.addCallAdapterFactory(ApiResponseCallAdapterFactory.create()).build()
-		.create(KitsuApi::class.java)
+    @Singleton
+    @Provides
+    fun provideKitsuApi(moshi: Moshi): KitsuApi = Retrofit.Builder().baseUrl(KitsuApi.baseUrl)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(ApiResponseCallAdapterFactory.create()).build()
+        .create(KitsuApi::class.java)
 
-	@Singleton
-	@Provides
-	fun provideKitsuRepository(api: KitsuApi): KitsuRepository = KitsuRepositoryImpl(api = api)
+    @Singleton
+    @Provides
+    fun provideKitsuRepository(api: KitsuApi): KitsuRepository = KitsuRepositoryImpl(api = api)
 }

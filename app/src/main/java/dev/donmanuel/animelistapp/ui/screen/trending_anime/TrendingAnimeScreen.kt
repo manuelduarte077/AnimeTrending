@@ -38,58 +38,58 @@ import dev.donmanuel.animelistapp.ui.screen.trending_anime.composable.AnimeCard
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SharedTransitionScope.TrendingAnimeScreen(
-	navController: NavHostController,
-	onAnimeClick: (String, String) -> Unit,
-	animatedVisibilityScope: AnimatedVisibilityScope,
-	viewModel: TrendingAnimeViewModel = hiltViewModel()
+    navController: NavHostController,
+    onAnimeClick: (String, String) -> Unit,
+    animatedVisibilityScope: AnimatedVisibilityScope,
+    viewModel: TrendingAnimeViewModel = hiltViewModel()
 ) {
-	val animeData by viewModel.animeData.collectAsStateWithLifecycle()
+    val animeData by viewModel.animeData.collectAsStateWithLifecycle()
 
-	Scaffold(topBar = {
-		TopAppBar(title = {
-			Text(
-				text = "Anime List",
-				style = MaterialTheme.typography.titleLarge,
-				fontWeight = FontWeight.Bold,
-				textAlign = TextAlign.Center,
-			)
-		}, actions = {
-			IconButton(onClick = {
-				navController.navigate(SettingsRoute)
-			}) {
-				Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings")
-			}
+    Scaffold(topBar = {
+        TopAppBar(title = {
+            Text(
+                text = "Anime List",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+            )
+        }, actions = {
+            IconButton(onClick = {
+                navController.navigate(SettingsRoute)
+            }) {
+                Icon(imageVector = Icons.Rounded.Settings, contentDescription = "Settings")
+            }
 
-		})
+        })
 
-	}) { innerPadding ->
-		AnimatedContent(
-			targetState = animeData.isEmpty(), label = "..."
-		) { isEmpty ->
-			if (isEmpty) {
-				Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-					CircularProgressIndicator()
-				}
-			} else {
-				LazyColumn(
-					contentPadding = PaddingValues(
-						top = innerPadding.calculateTopPadding() + 10.dp,
-						start = 20.dp,
-						end = 20.dp,
-						bottom = innerPadding.calculateBottomPadding() + 10.dp,
-					), verticalArrangement = Arrangement.spacedBy(16.dp)
-				) {
-					items(animeData) { anime ->
-						AnimeCard(
-							anime = anime, onClick = {
-								onAnimeClick(anime.attributes.posterImage.original, anime.id)
-							}, animatedVisibilityScope = animatedVisibilityScope
-						)
-					}
-				}
+    }) { innerPadding ->
+        AnimatedContent(
+            targetState = animeData.isEmpty(), label = "..."
+        ) { isEmpty ->
+            if (isEmpty) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator()
+                }
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(
+                        top = innerPadding.calculateTopPadding() + 10.dp,
+                        start = 20.dp,
+                        end = 20.dp,
+                        bottom = innerPadding.calculateBottomPadding() + 10.dp,
+                    ), verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(animeData) { anime ->
+                        AnimeCard(
+                            anime = anime, onClick = {
+                                onAnimeClick(anime.attributes.posterImage.original, anime.id)
+                            }, animatedVisibilityScope = animatedVisibilityScope
+                        )
+                    }
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }
 

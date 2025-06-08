@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class KitsuRepositoryImpl @Inject constructor(
     private val api: KitsuApi
-): KitsuRepository {
+) : KitsuRepository {
 
     override suspend fun getTrendingAnime(): List<AnimeData> {
         var animeData: List<AnimeData> = emptyList()
