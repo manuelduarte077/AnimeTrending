@@ -1,7 +1,6 @@
 package dev.donmanuel.animelistapp
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**

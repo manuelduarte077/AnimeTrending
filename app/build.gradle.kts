@@ -50,6 +50,12 @@ android {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
 		}
 	}
+	testOptions {
+		unitTests {
+			isIncludeAndroidResources = true
+			isReturnDefaultValues = true
+		}
+	}
 }
 
 dependencies {
@@ -102,4 +108,14 @@ dependencies {
 	implementation(libs.koin.core)
 	implementation(libs.koin.android)
 	implementation(libs.koin.compose)
+	
+	// MARK: - Testing
+	testImplementation(libs.junit)
+	testImplementation(libs.mockito.core)
+	testImplementation(libs.mockito.kotlin)
+	testImplementation(libs.turbine)
+	testImplementation(libs.kotlinx.coroutines.test)
+	testImplementation(libs.koin.test)
+	testImplementation(libs.koin.test.junit4)
+	testImplementation(libs.mockk)
 }

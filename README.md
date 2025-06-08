@@ -20,6 +20,8 @@ Una aplicación móvil moderna para Android que muestra información sobre anime
 - **Coil**: Para la carga eficiente de imágenes.
 - **Retrofit & Moshi**: Para las llamadas a la API y el manejo de JSON.
 - **Material 3**: Para implementar el diseño de la interfaz de usuario.
+- **JUnit, Mockito, MockK**: Para pruebas unitarias.
+- **Turbine**: Para pruebas de Flows.
 
 ## Capturas de Pantalla
 
@@ -38,10 +40,26 @@ Una aplicación móvil moderna para Android que muestra información sobre anime
 - **di**: Módulos de inyección de dependencias (KoinModule).
 - **model**: Clases de datos y modelos.
 - **navigation**: Configuración de navegación entre pantallas.
+- **test**: Pruebas unitarias para los componentes principales.
 
 ## Arquitectura
 
 La aplicación sigue el patrón de arquitectura MVVM (Model-View-ViewModel) junto con Clean Architecture para mantener un código limpio, testeable y escalable.
+
+## Pruebas Unitarias
+
+El proyecto incluye pruebas unitarias para los componentes principales:
+
+- **Repositorio**: Pruebas para `KitsuRepositoryImpl` que verifican la correcta obtención de datos desde la API.
+- **ViewModels**: Pruebas para `TrendingAnimeViewModel` y `AnimeViewModel` que verifican la lógica de negocio.
+- **Módulos de Koin**: Pruebas para verificar la correcta inyección de dependencias.
+- **Modelos de datos**: Pruebas para verificar la correcta conversión entre DTOs y modelos de dominio.
+
+Para ejecutar las pruebas unitarias:
+
+```bash
+./gradlew test
+```
 
 ## Demo
 
